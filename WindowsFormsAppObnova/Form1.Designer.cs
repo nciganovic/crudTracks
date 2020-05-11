@@ -32,6 +32,8 @@
             this.btn_create = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
+            this.txb_search = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_songs)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,11 +76,30 @@
             this.btn_delete.UseVisualStyleBackColor = true;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
+            // txb_search
+            // 
+            this.txb_search.Location = new System.Drawing.Point(351, 264);
+            this.txb_search.Name = "txb_search";
+            this.txb_search.Size = new System.Drawing.Size(143, 20);
+            this.txb_search.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(500, 264);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txb_search);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.btn_create);
@@ -87,6 +108,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_songs)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,6 +118,8 @@
         private System.Windows.Forms.Button btn_create;
         private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.TextBox txb_search;
+        private System.Windows.Forms.Button button1;
     }
 }
 

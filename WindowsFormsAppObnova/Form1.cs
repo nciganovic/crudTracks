@@ -63,5 +63,20 @@ namespace WindowsFormsAppObnova
             var createForm = new Form2(GetSelectedId());
             createForm.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string keyword = txb_search.Text.Trim();
+                var operation = new GetSongOperation(keyword);
+                var data = operation.Execute().Data as IEnumerable<SongDto>;
+                this.dgv_songs.DataSource = data;
+            }
+            catch (Exception exp) {
+                MessageBox.Show(exp.Message);
+            }
+            
+        }
     }
 }

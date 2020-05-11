@@ -8,11 +8,28 @@ namespace WindowsFormsAppObnova.BusinessLayer
 {
     public class GetSongOperation : Operation
     {
+        private string keyword;
+
+        public GetSongOperation()
+        {
+            
+        }
+
+        public GetSongOperation(string keyword = null) {
+            this.keyword = keyword;
+        }
+
         public override OperationResult Execute()
         {
             var query = Context.Track.AsQueryable();
 
             query.Where(t => t.InvoiceLine.Any());
+
+            if (!String.IsNullOrEmpty(keyword)) {
+                query = query.Where(
+                        x => x.Name.Contains(keyword)
+                    );
+            }
 
             var songs = query.Select(s => new SongDto
             {
