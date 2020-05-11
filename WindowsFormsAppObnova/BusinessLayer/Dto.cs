@@ -10,7 +10,7 @@ namespace WindowsFormsAppObnova.BusinessLayer
     {
     }
 
-    public class SongDto : Dto { 
+    public class SongDto : Dto {
         public int Id { get; set; }
         public string Name { get; set; }
         public string ArtistName { get; set; }
@@ -23,7 +23,7 @@ namespace WindowsFormsAppObnova.BusinessLayer
         public int TotalSoldItems { get; set; }
     }
 
-    public class MediaTypeDto : Dto { 
+    public class MediaTypeDto : Dto {
         public int Id { get; set; }
         public string Name { get; set; }
     }
@@ -61,6 +61,19 @@ namespace WindowsFormsAppObnova.BusinessLayer
         public int Bytes { get; set; }
         public int Miliseconds { get; set; }
         public List<int> PlaylistIDs { get; set; } = new List<int>();
+        public int MediaId { get; set; }
+        public decimal Price { get; set; }
+    }
+
+    public class EditSongDto : Dto
+    {
+        public int SongId { get; set; }
+        public string Name { get; set; }
+        public int AlbumId { get; set; }
+        public int GenreId { get; set; }
+        public string Composer { get; set; }
+        public int Bytes { get; set; }
+        public int Miliseconds { get; set; }
         public int MediaId { get; set; }
         public decimal Price { get; set; }
     }

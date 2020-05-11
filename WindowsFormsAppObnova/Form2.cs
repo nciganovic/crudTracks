@@ -13,6 +13,8 @@ namespace WindowsFormsAppObnova
 {
     public partial class Form2 : Form
     {
+        private int id;
+        
         public Form2()
         {
             InitializeComponent();
@@ -29,6 +31,23 @@ namespace WindowsFormsAppObnova
             PopulateDropDown(GetAlbum(), cbx_album);
             PopulateDropDown(GetGenre(), cbx_genre);
             PopulatePlaylist();
+
+            this.id = id;
+            EditSongDto currentSongDto = GetSongById().First() as EditSongDto;
+            SetDefaultValues(currentSongDto);
+            
+        }
+
+        private void SetDefaultValues(EditSongDto dto) {
+            txb_songname.Text = dto.Name;
+            txb_bytes.Text = dto.Bytes.ToString();
+            txb_composer.Text = dto.Composer;
+            txb_milisec.Text = dto.Miliseconds.ToString();
+            txb_unitprice.Text = dto.Price.ToString();
+
+            cbx_album.SelectedIndex = dto.AlbumId; //might be wrong
+            cbx_genre.SelectedIndex = dto.GenreId; //might be wrong
+            cbx_mediaType.SelectedIndex = dto.MediaId; //might be wrong
         }
 
         private void PopulateDropDown(IEnumerable<Dto> data, ComboBox c)
@@ -36,6 +55,13 @@ namespace WindowsFormsAppObnova
             c.DisplayMember = "Name";
             c.ValueMember = "Id";
             c.DataSource = data;
+        }
+
+        private IEnumerable<Dto> GetSongById()
+        {
+            var operation = new GetSongByIdOperation(id);
+            var data = OperationManager.Instance.Exec(operation);
+            return data.Data as IEnumerable<EditSongDto>;
         }
 
         private IEnumerable<Dto> GetAlbum()

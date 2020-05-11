@@ -59,6 +59,7 @@
     <Compile Include="BusinessLayer\DeleteSongOperation.cs" />
     <Compile Include="BusinessLayer\Dto.cs" />
     <Compile Include="BusinessLayer\GetDropDownOperations.cs" />
+    <Compile Include="BusinessLayer\GetSongByIdOperation.cs" />
     <Compile Include="BusinessLayer\GetSongOperation.cs" />
     <Compile Include="BusinessLayer\Operation.cs" />
     <Compile Include="BusinessLayer\OperationManager.cs" />

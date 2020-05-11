@@ -60,7 +60,8 @@ namespace WindowsFormsAppObnova
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            
+            var createForm = new Form2(GetSelectedId());
+            createForm.Show();
         }
     }
 }
