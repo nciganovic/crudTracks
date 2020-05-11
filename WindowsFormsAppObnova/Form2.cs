@@ -22,6 +22,8 @@ namespace WindowsFormsAppObnova
             PopulateDropDown(GetAlbum(), cbx_album);
             PopulateDropDown(GetGenre(), cbx_genre);
             PopulatePlaylist();
+
+            button1.Visible = true;
         }
 
         public Form2(int id)
@@ -35,7 +37,8 @@ namespace WindowsFormsAppObnova
             this.id = id;
             EditSongDto currentSongDto = GetSongById().First() as EditSongDto;
             SetDefaultValues(currentSongDto);
-            
+
+            btn_updatesongf2.Visible = true;
         }
 
         private void SetDefaultValues(EditSongDto dto) {
@@ -103,11 +106,11 @@ namespace WindowsFormsAppObnova
             this.Dispose();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private CreateSongDto CollectFormData() {
             CreateSongDto dto = new CreateSongDto();
 
-            try {
+            try
+            {
                 dto.Name = txb_songname.Text.Trim();
                 dto.AlbumId = (cbx_album.SelectedItem as AlbumDto).Id;
                 dto.Composer = txb_composer.Text.Trim();
@@ -117,16 +120,24 @@ namespace WindowsFormsAppObnova
                 dto.MediaId = (cbx_mediaType.SelectedItem as MediaTypeDto).Id;
                 dto.GenreId = (cbx_genre.SelectedItem as GenreDto).Id;
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 MessageBox.Show(exp.Message);
             }
 
             //Playlist
             var selectedPlaylists = playlistCheckbox.CheckedItems;
-            foreach (var playlist in selectedPlaylists) {
+            foreach (var playlist in selectedPlaylists)
+            {
                 dto.PlaylistIDs.Add((playlist as PlaylistDto).Id);
             }
+
+            return dto;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CreateSongDto dto = CollectFormData();
 
             try
             {
@@ -146,6 +157,27 @@ namespace WindowsFormsAppObnova
                 MessageBox.Show(exp.Message);
             }
 
+        }
+
+        private void btn_updatesongf2_Click(object sender, EventArgs e)
+        {
+            CreateSongDto dto = CollectFormData();
+
+            dto.SongId = id;
+
+            try
+            {
+                var operation = new CreateSongOperation(dto);
+                operation.Execute();
+
+                MessageBox.Show("Uspesan update!");
+
+                this.Dispose();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
     }
 }

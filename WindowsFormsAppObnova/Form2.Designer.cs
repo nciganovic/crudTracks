@@ -50,6 +50,7 @@
             this.cbx_genre = new System.Windows.Forms.ComboBox();
             this.playlistCheckbox = new System.Windows.Forms.CheckedListBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btn_updatesongf2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txb_songname
@@ -179,6 +180,7 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "Create";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
@@ -225,11 +227,23 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "Playlist";
             // 
+            // btn_updatesongf2
+            // 
+            this.btn_updatesongf2.Location = new System.Drawing.Point(287, 224);
+            this.btn_updatesongf2.Name = "btn_updatesongf2";
+            this.btn_updatesongf2.Size = new System.Drawing.Size(60, 23);
+            this.btn_updatesongf2.TabIndex = 21;
+            this.btn_updatesongf2.Text = "Update";
+            this.btn_updatesongf2.UseVisualStyleBackColor = true;
+            this.btn_updatesongf2.Visible = false;
+            this.btn_updatesongf2.Click += new System.EventHandler(this.btn_updatesongf2_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 498);
+            this.Controls.Add(this.btn_updatesongf2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.playlistCheckbox);
             this.Controls.Add(this.label8);
@@ -280,5 +294,6 @@
         private System.Windows.Forms.ComboBox cbx_genre;
         private System.Windows.Forms.CheckedListBox playlistCheckbox;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btn_updatesongf2;
     }
 }
